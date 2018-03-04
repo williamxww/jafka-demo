@@ -6,3 +6,5 @@ target/*
 .idea/*
 *.iml
 *.class
+data/jafka/*
+data/zk/*
