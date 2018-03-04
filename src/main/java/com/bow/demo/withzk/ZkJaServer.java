@@ -13,20 +13,20 @@ public class ZkJaServer {
 
     private Jafka[] jafkas;
 
-    public void start(){
+    public void start() {
         final int jafkaCount = 1;
-        final int partition = 1;
+        final int partition = 3;
         jafkas = new Jafka[jafkaCount];
-
         for (int i = 0; i < jafkaCount; i++) {
             Properties serverProperties = new Properties();
             serverProperties.setProperty("enable.zookeeper", "true");
             serverProperties.setProperty("zk.connect", "localhost:2181");
             serverProperties.setProperty("port", "9092");
-            serverProperties.setProperty("brokerid", "" + i);
+            serverProperties.setProperty("brokerid", "" + (100 + i));
             serverProperties.setProperty("num.partitions", "" + partition);
-            serverProperties.setProperty("log.dir", "jafka/jafka" + i);
-            serverProperties.setProperty("num.threads",String.valueOf(Math.min(2,Runtime.getRuntime().availableProcessors())));
+            serverProperties.setProperty("log.dir", "data/jafka");
+            serverProperties.setProperty("num.threads",
+                    String.valueOf(Math.min(2, Runtime.getRuntime().availableProcessors())));
             Jafka jafka = new Jafka();
             jafka.start(serverProperties, null, null);
             jafkas[i] = jafka;

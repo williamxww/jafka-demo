@@ -16,7 +16,7 @@ public class ZookeeperServer {
 
 
     public static ZkServer startZkServer(int port) throws IOException {
-         String dataPath="zkdata";
+         String dataPath="data/zk";
          String logPath=dataPath;
         ZkServer zkServer = new ZkServer(dataPath, logPath, port,
                 ZkServer.DEFAULT_TICK_TIME, 100);
