@@ -26,7 +26,7 @@ public class ZkJaProducer {
         final AtomicInteger index = new AtomicInteger(0);
         while (index.get() < 100) {
             StringProducerData data = new StringProducerData("demo");
-            data.setKey("0");
+//            data.setKey("0");
             data.add("" + index.incrementAndGet());
             System.in.read();
             producer.send(data);
